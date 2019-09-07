@@ -23,12 +23,12 @@ class App extends StatelessWidget {
           hintColor: const Color(0xFFAEAEAE),
           bottomAppBarColor: Colors.transparent,
       ),
-      initialRoute: '/',
+      initialRoute: '/evaluate',
       routes: {
         '/': (_) => new Dashboard(),
         '/home': (_) => new Home(),
         '/about': (_) => new About(),
-        '/evaluate': (_) => new Evaluate(),
+        '/evaluate': (_) => new TakePictureScreen(),
       },
     );
   }

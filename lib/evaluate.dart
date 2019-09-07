@@ -16,7 +16,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
-      home: Evaluate(
+      home: TakePictureScreen(
         // Pass the appropriate camera to the TakePictureScreen widget.
         camera: firstCamera,
       ),
@@ -25,19 +25,19 @@ Future<void> main() async {
 }
 
 // A screen that allows users to take a picture using a given camera.
-class Evaluate extends StatefulWidget {
+class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
 
-  const Evaluate({
+  const TakePictureScreen({
     Key key,
     @required this.camera,
   }) : super(key: key);
 
   @override
-  EvaluateState createState() => EvaluateState();
+  TakePictureScreenState createState() => TakePictureScreenState();
 }
 
-class EvaluateState extends State<Evaluate> {
+class TakePictureScreenState extends State<TakePictureScreen> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -97,7 +97,7 @@ class EvaluateState extends State<Evaluate> {
             // pattern package.
             final path = join(
               // Store the picture in the temp directory.
-              // Find the temp directory using the `path_provider` plugin.
+              // Find the temp directory using the path_provider plugin.
               (await getTemporaryDirectory()).path,
               '${DateTime.now()}.png',
             );
@@ -132,12 +132,12 @@ class DisplayPictureScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Image taken')),
-        // The image is stored as a file on the device. Use the `Image.file`
+        // The image is stored as a file on the device. Use the Image.file
         // constructor with the given path to display` the image.
         body: Image.file(File(imagePath)),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-//  TODO after server is done this needs to upload the image file to the server thing idrk
+
           },
           child: Icon(Icons.file_upload),
           backgroundColor: Color(0xFFB19CD9),
