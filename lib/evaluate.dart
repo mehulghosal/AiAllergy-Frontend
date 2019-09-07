@@ -93,7 +93,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             // Ensure that the camera is initialized.
             await _initializeControllerFuture;
 
-            // Construct the path where the image should be saved using the 
+            // Construct the path where the image should be saved using the
             // pattern package.
             final path = join(
               // Store the picture in the temp directory.
@@ -131,10 +131,17 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Display the Picture')),
-      // The image is stored as a file on the device. Use the `Image.file`
-      // constructor with the given path to display the image.
-      body: Image.file(File(imagePath)),
+        appBar: AppBar(title: Text('Image taken')),
+        // The image is stored as a file on the device. Use the `Image.file`
+        // constructor with the given path to display` the image.
+        body: Image.file(File(imagePath)),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+//  TODO after server is done this needs to upload the image file to the server thing idrk
+          },
+          child: Icon(Icons.file_upload),
+          backgroundColor: Color(0xFFB19CD9),
+        )
     );
   }
 }
