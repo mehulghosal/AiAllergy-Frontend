@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'about.dart';
 import 'dashboard.dart';
 import 'evaluate.dart';
 import 'home.dart';
 
-
-void main() => runApp(App());
+CameraDescription firstCamera;
+Future<void> main() async {
+  final cameras = await availableCameras();
+  firstCamera = cameras.first;
+  runApp(App());
+}
 
 class App extends StatelessWidget {
   @override
@@ -28,7 +33,7 @@ class App extends StatelessWidget {
         '/': (_) => new Dashboard(),
         '/home': (_) => new Home(),
         '/about': (_) => new About(),
-        '/evaluate': (_) => new TakePictureScreen(),
+        '/evaluate': (_) => new Evaluate(camera: firstCamera),
       },
     );
   }
