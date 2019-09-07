@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'about.dart';
+import 'dashboard.dart';
+import 'evaluate.dart';
 import 'home.dart';
 
 
@@ -22,7 +25,10 @@ class App extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (_) => new Home(),
+        '/': (_) => new Dashboard(),
+        '/home': (_) => new Home(),
+        '/about': (_) => new About(),
+        '/evaluate': (_) => new Evaluate(),
       },
     );
   }

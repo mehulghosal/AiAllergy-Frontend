@@ -16,7 +16,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
-      home: TakePictureScreen(
+      home: Evaluate(
         // Pass the appropriate camera to the TakePictureScreen widget.
         camera: firstCamera,
       ),
@@ -25,19 +25,19 @@ Future<void> main() async {
 }
 
 // A screen that allows users to take a picture using a given camera.
-class TakePictureScreen extends StatefulWidget {
+class Evaluate extends StatefulWidget {
   final CameraDescription camera;
 
-  const TakePictureScreen({
+  const Evaluate({
     Key key,
     @required this.camera,
   }) : super(key: key);
 
   @override
-  TakePictureScreenState createState() => TakePictureScreenState();
+  EvaluateState createState() => EvaluateState();
 }
 
-class TakePictureScreenState extends State<TakePictureScreen> {
+class EvaluateState extends State<Evaluate> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
