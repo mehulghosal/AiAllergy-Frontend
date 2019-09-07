@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:convert';
+import 'dart:collection';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
+import 'package:http/http.dart' as http;
 
 class Evaluate extends StatefulWidget {
   final CameraDescription camera;
@@ -84,6 +87,14 @@ class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
   const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
 
+  Future<http.Response> upload(File imageFile) async {
+    List<int> imageBytes = imageFile.readAsBytesSync();
+    String base64Image = base64.encode(imageBytes);
+    var url;
+    http.Response res =  await http.post(url, body: {"data":base64Image});
+    return res;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,6 +102,10 @@ class DisplayPictureScreen extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             // SEND TO SERVER
+            File imageFile = new File(imagePath);
+            http.Response resp = (upload(imageFile));
+
+
           },
           child: Icon(Icons.file_upload),
           backgroundColor: Color(0xFFB19CD9),
