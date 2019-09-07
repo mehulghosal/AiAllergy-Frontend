@@ -14,24 +14,41 @@ class HomeState extends State<Home> {
 //        color: Theme.of(context).primaryColor,
 //      ),
       child: Scaffold (
-        backgroundColor: new Color(0xFFFFFF),
-        body: Center (
-          child: Column (
-            children: <Widget>[
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/AiAllergy_logo.svg'),
+//        backgroundColor: new ,
+        body: Column (
+          children: <Widget>[
+            Container (
+              child: Image.asset(
+                'images/AiAllergy_logo.svg',
+              ),
+              alignment: new Alignment(0,0),
+            ),
+            Column (
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () {},
+                  child: const Text('Evaluate', style: TextStyle(fontSize: 50, fontFamily: 'Avenir')),
+                  shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                ),
+                SizedBox(height: 20),
+                RaisedButton(
+                  onPressed: () {},
+                  child: const Text('Allergens', style: TextStyle(fontSize: 50, fontFamily: '')),
+                  shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                ),
+                SizedBox(height: 20),
+                ButtonTheme (
+                  height: 100.0,
+                  child: RaisedButton(
+                    onPressed: () {},
+                    child: const Text('Emergency', style: TextStyle(fontSize: 50, fontFamily: 'Avenir')),
+                     shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
+
                   ),
                 ),
-              ),
-              RaisedButton(
-                onPressed: () {},
-                child: const Text('Evaluate', style: TextStyle(fontSize: 20)),
-//                shape: new ShapetBorder()
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );
