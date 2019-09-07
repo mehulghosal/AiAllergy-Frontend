@@ -19,8 +19,6 @@ class App extends StatelessWidget {
           textSelectionColor: const Color(0xFF382618),
           hintColor: const Color(0xFFAEAEAE),
           bottomAppBarColor: Colors.transparent,
-
-          fontFamily: 'Opensans'
       ),
       initialRoute: '/',
       routes: {
