@@ -87,12 +87,13 @@ class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
   const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
 
-  Future<http.Response> upload(File imageFile) async {
+  Future<String> upload(File imageFile) async {
     List<int> imageBytes = imageFile.readAsBytesSync();
     String base64Image = base64.encode(imageBytes);
-    var url;
+    print(base64Image);
+    var url = "aillergy.tec/abcdef";
     http.Response res =  await http.post(url, body: {"data":base64Image});
-    return res;
+    return res.body;
   }
 
   @override
@@ -103,7 +104,7 @@ class DisplayPictureScreen extends StatelessWidget {
           onPressed: () {
             // SEND TO SERVER
             File imageFile = new File(imagePath);
-            http.Response resp = (upload(imageFile));
+            var body = upload(imageFile);
 
 
           },

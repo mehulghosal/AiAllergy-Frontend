@@ -28,7 +28,7 @@ class App extends StatelessWidget {
           hintColor: const Color(0xFFAEAEAE),
           bottomAppBarColor: Colors.transparent,
       ),
-      initialRoute: '/evaluate',
+      initialRoute: '/',
       routes: {
         '/': (_) => new Dashboard(),
         '/home': (_) => new Home(),
