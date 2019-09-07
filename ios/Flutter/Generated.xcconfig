@@ -1,7 +1,13 @@
 // This is a generated file; do not edit or check into version control.
+<<<<<<< HEAD
+FLUTTER_ROOT=/home/mehulghosal/Documents/flutter
+FLUTTER_APPLICATION_PATH=/home/mehulghosal/code/AiAllergy-Frontend
+FLUTTER_TARGET=lib/main.dart
+=======
 FLUTTER_ROOT=/Users/sahilshah/Development/flutter
 FLUTTER_APPLICATION_PATH=/Users/sahilshah/Programs/AiAllergy/AiAllergy-Frontend
 FLUTTER_TARGET=/Users/sahilshah/Programs/AiAllergy/AiAllergy-Frontend/lib/main.dart
+>>>>>>> 145f73511f899e81fff9b9f0b88a5561c51013ad
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build/ios
 FLUTTER_FRAMEWORK_DIR=/Users/sahilshah/Development/flutter/bin/cache/artifacts/engine/ios
