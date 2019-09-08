@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
-import 'dart:collection';
 
+import 'allergens.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
