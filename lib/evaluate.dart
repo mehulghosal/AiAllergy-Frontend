@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:convert';
 
 import 'allergens.dart';
+import 'globals.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
@@ -39,6 +40,14 @@ class EvaluateState extends State<Evaluate> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  String topThree = "";
+
+  void _updateText(List<String> data){
+    setState(() {
+      topThree = "The top three guesses are: " + data[0] + ", " + data[1] + ", and" + data[2] + ".";
+    });
   }
 
   @override
@@ -91,7 +100,7 @@ class DisplayPictureScreen extends StatelessWidget {
     List<int> imageBytes = imageFile.readAsBytesSync();
     String base64Image = base64.encode(imageBytes);
 //    print(base64Image);
-    var url = "aillergy.tec/abc";
+    var url = "aiallergy.tech/request";
     http.Response res =  await http.post(url, body: {"image":base64Image, "allergens": allergens});
     return res.body;
   }
@@ -104,19 +113,20 @@ class DisplayPictureScreen extends StatelessWidget {
             Image.file(File(imagePath)),
             Container (
               child: ButtonTheme (
-                height: 110.0,
+                height: 70.0,
                 minWidth: 300.0,
                 child: RaisedButton(
                   onPressed: () {
                     File imageFile = new File(imagePath);
                     var body = upload(imageFile);
-                  },
+                    globals.parse(body);
+                    },
                   color: Color(0xFFACECD5),
                   child: const Text('Evaluate', style: TextStyle(fontSize: 40, fontFamily: 'Open Sans', fontWeight: FontWeight.w400,)),
                   shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
                 ),
               ),
-              alignment: new Alignment(0,0.9)
+              alignment: new Alignment(0,0.95)
             ),
           ],
         ),

@@ -35,8 +35,8 @@ class App extends StatelessWidget {
         '/home': (_) => new Home(),
         '/about': (_) => new About(),
         '/evaluate': (_) => new Evaluate(camera: firstCamera),
-        '/allergens': (_) => new Allergens(),
-        '/results': (_) => new Results(),
+//        '/allergens': (_) => new Allergens(),
+//        '/results': (_) => new Results(data: ),
       },
     );
   }
