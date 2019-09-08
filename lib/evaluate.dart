@@ -99,8 +99,14 @@ class DisplayPictureScreen extends StatelessWidget {
   Future<String> upload(File imageFile) async {
     List<int> imageBytes = imageFile.readAsBytesSync();
     String base64Image = base64.encode(imageBytes);
+<<<<<<< HEAD
     var url = "aiallergy.tech/request/";
     http.Response res =  await http.post(url, body: {"image":base64Image, "allergens": 1});
+=======
+//    print(base64Image);
+    var url = "aiallergy.tech/request";
+    http.Response res =  await http.post(url, body: {"image":imageBytes, "allergens": "assets/fuckthisuttershitihatemylife.json"});
+>>>>>>> 8bfdaecddec7d2b56c51a4d6549dfd0cc8158b83
     return res.body;
   }
 

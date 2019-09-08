@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:convert';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'dashboard.dart';
 
@@ -8,23 +12,51 @@ class Allergens extends StatefulWidget {
   AllergensState createState() => new AllergensState();
 }
 
-List<String> allergies = ['Nuts','Cheese'];
 
 class AllergensState extends State<Allergens> {
   final TextEditingController textEditingController = new TextEditingController();
 
-//  static List<List<String>> allergensList = new List();
-//  static List<String> allergens1 = ["Nuts","0"];
-//  static List<String> allergens2 = ["Dairy","1"];
-//  allergensList.add(allergens1);
-//  allergensList.add(allergens2);
+  List<String> allergies = [];
+
+  Directory dir;
+  File jsonFile;
+  String fileName = "fuckthisuttershitihatemylife.json";
+  bool fileExists = false;
+
+
+  @override
+  void initState() {
+    super.initState();
+    getApplicationDocumentsDirectory().then((Directory directory) {
+      dir = directory;
+      jsonFile = new File(dir.path + "/" + fileName);
+    });
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold (
         body: Stack (
           children: <Widget>[
+            Container (
+              alignment: new Alignment(0,-0.9),
+              child: Text (
+                'Allergens',
+                style: new TextStyle (
+                  fontFamily: 'Lato',
+                  fontSize: 40,
+                ),
+              ),
+            ),
             Container(
+              color: Color(0xFFEFEEE8),
+              alignment: new Alignment(0,-0.7),
                 child: ListView.builder(
                   itemCount: allergies.length,
                   itemBuilder: (context, index) {
@@ -33,7 +65,7 @@ class AllergensState extends State<Allergens> {
                       actionExtentRatio: 0.25,
                       child: Container(
                         padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-//                        color: Color(0xFF089CFF0),
+                        color: Color(0xFF089CFF0),
                         child: ListTile(
                             leading: Text(
                               allergies[index],
@@ -65,12 +97,12 @@ class AllergensState extends State<Allergens> {
                     child: Container(
                       child: TextField(
                         autofocus: true,
-                        cursorColor: Theme.of(context).textSelectionColor,
-                        style: TextStyle(color: Theme.of(context).textSelectionColor, fontSize: 15.0),
+                        cursorColor: Colors.black,
+                        style: TextStyle(color: Colors.black54, fontSize: 15.0),
                         controller: textEditingController,
                         decoration: InputDecoration.collapsed (
                           hintText: 'Enter your allergy...',
-                          hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                          hintStyle: TextStyle(color: Colors.black12),
                         ),
                       ),
                     ),
@@ -79,13 +111,13 @@ class AllergensState extends State<Allergens> {
                     child: new Container(
                       margin: new EdgeInsets.symmetric(horizontal: 8),
                       child: new IconButton(
-                        icon: new Icon(Icons.send),
+                        icon: new Icon(Icons.file_upload),
                         iconSize: 20,
                         onPressed: () => addItem(textEditingController.text),
                         color: Theme.of(context).textSelectionColor,
                       ),
                     ),
-                    color: Colors.white,
+                    color: Color(0xFFEFEEE8),
                   ),
                 ],
               ),
@@ -100,9 +132,18 @@ class AllergensState extends State<Allergens> {
       allergies.removeAt(index);
     });
   }
-  void addItem(index){
+  void addItem(yum){
     setState((){
-      allergies.add(index);
+      allergies.add(yum);
+      writeToFile('allergy', yum);
     });
+  }
+  void writeToFile(String key, String value) {
+    print("Writing to file!");
+    Map<String, String> content = {key: value};
+
+
+//    this.setState(() => fileContent = new Map<String, dynamic>.from(json.decode(jsonFile.readAsStringSync()).value));
+//    print(fileContent);
   }
 }
