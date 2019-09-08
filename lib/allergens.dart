@@ -12,17 +12,16 @@ class Allergens extends StatefulWidget {
   AllergensState createState() => new AllergensState();
 }
 
-List<String> allergies = [];
 
 class AllergensState extends State<Allergens> {
   final TextEditingController textEditingController = new TextEditingController();
 
+  List<String> allergies = [];
 
   Directory dir;
   File jsonFile;
   String fileName = "fuckthisuttershitihatemylife.json";
   bool fileExists = false;
-  Map<String, dynamic> fileContent;
 
 
   @override
@@ -31,8 +30,6 @@ class AllergensState extends State<Allergens> {
     getApplicationDocumentsDirectory().then((Directory directory) {
       dir = directory;
       jsonFile = new File(dir.path + "/" + fileName);
-      fileExists = jsonFile.existsSync();
-      if (fileExists) this.setState(() => fileContent = json.decode(jsonFile.readAsStringSync()));
     });
   }
 
@@ -141,26 +138,12 @@ class AllergensState extends State<Allergens> {
       writeToFile('allergy', yum);
     });
   }
-  void createFile(Map<String, String> content, Directory dir, String fileName) {
-    print("Creating file!");
-    File file = new File(dir.path + "/" + fileName);
-    file.createSync();
-    fileExists = true;
-    file.writeAsStringSync(json.encode(content));
-  }
   void writeToFile(String key, String value) {
     print("Writing to file!");
     Map<String, String> content = {key: value};
-    if (fileExists) {
-      print("File exists");
-      Map<String, String> jsonFileContent = new Map<String, dynamic>.from(json.decode(json.decode(jsonFile.readAsStringSync()).value));
-      jsonFileContent.addAll(content);
-      jsonFile.writeAsStringSync(json.encode(jsonFileContent));
-    } else {
-      print("File does not exist!");
-      createFile(content, dir, fileName);
-    }
-    this.setState(() => fileContent = new Map<String, dynamic>.from(json.decode(jsonFile.readAsStringSync()).value));
-    print(fileContent);
+
+
+//    this.setState(() => fileContent = new Map<String, dynamic>.from(json.decode(jsonFile.readAsStringSync()).value));
+//    print(fileContent);
   }
 }

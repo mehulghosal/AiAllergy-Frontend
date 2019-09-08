@@ -101,7 +101,7 @@ class DisplayPictureScreen extends StatelessWidget {
     String base64Image = base64.encode(imageBytes);
 //    print(base64Image);
     var url = "aiallergy.tech/request";
-    http.Response res =  await http.post(url, body: {"image":imageBytes/*, "allergens": allergens*/});
+    http.Response res =  await http.post(url, body: {"image":imageBytes, "allergens": "assets/fuckthisuttershitihatemylife.json"});
     return res.body;
   }
 

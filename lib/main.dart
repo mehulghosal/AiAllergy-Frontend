@@ -1,3 +1,4 @@
+import 'package:aiallergy_front/allergens.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'about.dart';
@@ -35,8 +36,8 @@ class App extends StatelessWidget {
         '/': (_) => new Dashboard(),
         '/home': (_) => new Home(),
         '/about': (_) => new About(),
+        '/allergens': (_) => new Allergens(),
         '/evaluate': (_) => new Evaluate(camera: firstCamera),
-//        '/allergens': (_) => new Allergens(),
 //        '/results': (_) => new Results(data: ),
         '/emergency': (_) => new Emergency(),
 
