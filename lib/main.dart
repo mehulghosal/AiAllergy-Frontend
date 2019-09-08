@@ -25,6 +25,7 @@ class App extends StatelessWidget {
           primaryColor: const Color(0xFF1853a5),
           accentColor: Colors.white,
           errorColor: const Color(0xFFFFAD32),
+
           textSelectionColor: const Color(0xFF382618),
           hintColor: const Color(0xFFAEAEAE),
           bottomAppBarColor: Colors.transparent,
