@@ -2,13 +2,14 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
-import 'allergens.dart';
+//import 'allergens.dart';
 import 'globals.dart';
 import 'package:camera/camera.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 
 class Evaluate extends StatefulWidget {
   final CameraDescription camera;
@@ -100,9 +101,10 @@ class DisplayPictureScreen extends StatelessWidget {
     List<int> imageBytes = imageFile.readAsBytesSync();
     String base64Image = base64.encode(imageBytes);
 //    print(base64Image);
-    var url = "aiallergy.tech/request";
-    http.Response res =  await http.post(url, body: {"image":base64Image, "allergens": allergens});
-    return res.body;
+    var url = "http://aiallergy.tech/request";
+    var response = await Future.wait([dio.post("/info"), dio.get("/token")]);
+//    http.Response res =  await http.post(url, body: {"image":base64Image, "allergens": null});
+    return json.decode(res.body);
   }
 
   @override
@@ -114,15 +116,17 @@ class DisplayPictureScreen extends StatelessWidget {
             Container (
               child: ButtonTheme (
                 height: 70.0,
-                minWidth: 300.0,
+                minWidth: 400.0,
                 child: RaisedButton(
                   onPressed: () {
                     File imageFile = new File(imagePath);
-                    var body = upload(imageFile);
+                    String body = upload(imageFile).toString();
+                    print( "helloo                                                         " + body);
+
                     globals.parse(body);
                     },
                   color: Color(0xFFACECD5),
-                  child: const Text('Evaluate', style: TextStyle(fontSize: 40, fontFamily: 'Open Sans', fontWeight: FontWeight.w400,)),
+                  child: const Text('Evaluate', style: TextStyle(fontSize: 30, fontFamily: 'Open Sans', fontWeight: FontWeight.w400,)),
                   shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
                 ),
               ),

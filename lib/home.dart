@@ -57,7 +57,9 @@ class HomeState extends State<Home> {
                 height: 110.0,
                 minWidth: 300.0,
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/emergency');
+                  },
                   color: Color(0xFFE57472),
                   child: const Text('Emergency', style: TextStyle(fontSize: 40, fontFamily: 'Open Sans', fontWeight: FontWeight.w400,)),
                   shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),

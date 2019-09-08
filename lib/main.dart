@@ -4,7 +4,7 @@ import 'about.dart';
 import 'dashboard.dart';
 import 'evaluate.dart';
 import 'home.dart';
-import 'allergens.dart';
+import 'emergency.dart';
 
 CameraDescription firstCamera;
 Future<void> main() async {
@@ -37,6 +37,8 @@ class App extends StatelessWidget {
         '/evaluate': (_) => new Evaluate(camera: firstCamera),
 //        '/allergens': (_) => new Allergens(),
 //        '/results': (_) => new Results(data: ),
+        '/emergency': (_) => new Emergency(),
+
       },
     );
   }
