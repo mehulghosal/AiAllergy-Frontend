@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:image/image.dart';
 
 class Evaluate extends StatefulWidget {
   final CameraDescription camera;
@@ -97,16 +98,10 @@ class DisplayPictureScreen extends StatelessWidget {
   const DisplayPictureScreen({Key key, this.imagePath}) : super(key: key);
 
   Future<String> upload(File imageFile) async {
-    List<int> imageBytes = imageFile.readAsBytesSync();
+    List<int> imageBytes = decodeImage(imageFile.readAsBytesSync());
     String base64Image = base64.encode(imageBytes);
-<<<<<<< HEAD
     var url = "aiallergy.tech/request/";
-    http.Response res =  await http.post(url, body: {"image":base64Image, "allergens": 1});
-=======
-//    print(base64Image);
-    var url = "aiallergy.tech/request";
     http.Response res =  await http.post(url, body: {"image":imageBytes, "allergens": "assets/fuckthisuttershitihatemylife.json"});
->>>>>>> 8bfdaecddec7d2b56c51a4d6549dfd0cc8158b83
     return res.body;
   }
 

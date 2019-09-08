@@ -40,12 +40,8 @@ class App extends StatelessWidget {
         '/about': (_) => new About(),
         '/allergens': (_) => new Allergens(),
         '/evaluate': (_) => new Evaluate(camera: firstCamera),
-<<<<<<< HEAD
         '/allergens': (_) => new Allergens(),
         '/results': (_) => new Result(),
-=======
-//        '/results': (_) => new Results(data: ),
->>>>>>> 8bfdaecddec7d2b56c51a4d6549dfd0cc8158b83
         '/emergency': (_) => new Emergency(),
 
       },

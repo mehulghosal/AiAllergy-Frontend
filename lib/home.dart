@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'allergens.dart';
 import 'dashboard.dart';
+import 'emergency.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -43,7 +45,10 @@ class HomeState extends State<Home> {
                 minWidth: 300.0,
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/allergens');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Allergens()),
+                    );
                   },
                   color: Color(0xFF5BB7E5),
                   child: const Text('Allergens', style: TextStyle(fontSize: 40, fontFamily: 'Open Sans', fontWeight: FontWeight.w400,)),
@@ -58,7 +63,12 @@ class HomeState extends State<Home> {
                 minWidth: 300.0,
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacementNamed('/emergency');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Emergency(),
+                      ),
+                    );
                   },
                   color: Color(0xFFE57472),
                   child: const Text('Emergency', style: TextStyle(fontSize: 40, fontFamily: 'Open Sans', fontWeight: FontWeight.w400,)),
