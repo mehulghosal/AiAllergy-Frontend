@@ -1,11 +1,10 @@
-import 'package:aiallergy_front/results.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'about.dart';
 import 'dashboard.dart';
 import 'evaluate.dart';
 import 'home.dart';
-import 'allergens.dart';
+import 'emergency.dart';
 
 CameraDescription firstCamera;
 Future<void> main() async {
@@ -37,8 +36,10 @@ class App extends StatelessWidget {
         '/home': (_) => new Home(),
         '/about': (_) => new About(),
         '/evaluate': (_) => new Evaluate(camera: firstCamera),
-        '/allergens': (_) => new Allergens(),
-        '/results': (_) => new Results(),
+//        '/allergens': (_) => new Allergens(),
+//        '/results': (_) => new Results(data: ),
+        '/emergency': (_) => new Emergency(),
+
       },
     );
   }
