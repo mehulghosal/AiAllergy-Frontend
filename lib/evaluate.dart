@@ -99,9 +99,14 @@ class DisplayPictureScreen extends StatelessWidget {
   Future<String> upload(File imageFile) async {
     List<int> imageBytes = imageFile.readAsBytesSync();
     String base64Image = base64.encode(imageBytes);
+<<<<<<< HEAD
+    var url = "aiallergy.tech/request/";
+    http.Response res =  await http.post(url, body: {"image":base64Image, "allergens": 1});
+=======
 //    print(base64Image);
     var url = "aiallergy.tech/request";
     http.Response res =  await http.post(url, body: {"image":imageBytes, "allergens": "assets/fuckthisuttershitihatemylife.json"});
+>>>>>>> 8bfdaecddec7d2b56c51a4d6549dfd0cc8158b83
     return res.body;
   }
 
@@ -118,10 +123,10 @@ class DisplayPictureScreen extends StatelessWidget {
                 child: RaisedButton(
                   onPressed: () {
                     File imageFile = new File(imagePath);
-                    String body = upload(imageFile).toString();
-                    print( "helloo                                                         " + body);
-
-                    globals.parse(body);
+                    var body = jsonDecode(upload(imageFile).toString());
+                    print("hello \n");
+                    body.forEach((k,v) => print('${k}: ${v}'));
+                    Navigator.of(context).pushReplacementNamed('/results');
                     },
                   color: Color(0xFFACECD5),
                   child: const Text('Evaluate', style: TextStyle(fontSize: 30, fontFamily: 'Open Sans', fontWeight: FontWeight.w400,)),
