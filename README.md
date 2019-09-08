@@ -1,6 +1,6 @@
 # aiallergy-front
 
-App front-end for PennApps2019f submission "AI Allergy". Created by front-end designers Mehul Ghosal and Salih Shah.
+App front-end for PennApps2019f submission "AI Allergy". Created by front-end designers Mehul Ghosal and SahilShah.
 
 ## Creation
 
