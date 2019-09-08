@@ -1,8 +1,13 @@
 # aiallergy-front
 
-## submission to PennApps 2019f
+App front-end for PennApps2019f submission "AI Allergy". Created by front-end designers Mehul Ghosal and Salih Shah.
 
-* built with flutter and dart
-* designed on Android Studio with OnePlus 5t; Android 9
+## Creation
 
-* to install, clone repo, and install the apk to an android phone
+AI Allergy is an app that was built with Flutter and Dart and designed on Android Studio with OnePlus 5t. Android 9 was used
+to install, clone repo, and install the APK to an Android phone.
+
+## Usage
+
+AI Allergy front end is used in conjunction with AI Allergy back end. Together, they create a machine learning system capable
+of identifying allergens in common foods.
