@@ -91,8 +91,8 @@ class DisplayPictureScreen extends StatelessWidget {
     List<int> imageBytes = imageFile.readAsBytesSync();
     String base64Image = base64.encode(imageBytes);
 //    print(base64Image);
-    var url = "aillergy.tec/abc";
-    http.Response res =  await http.post(url, body: {"image":base64Image, "allergens": allergens});
+    var url = "aillergy.tech/abc";
+    http.Response res =  await http.post(url, body: {"image":base64Image/*, "allergens": allergens*/});
     return res.body;
   }
 
@@ -120,8 +120,6 @@ class DisplayPictureScreen extends StatelessWidget {
             ),
           ],
         ),
-
-
     );
   }
 }
