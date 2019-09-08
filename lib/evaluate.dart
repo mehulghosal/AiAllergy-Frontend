@@ -90,27 +90,38 @@ class DisplayPictureScreen extends StatelessWidget {
   Future<String> upload(File imageFile) async {
     List<int> imageBytes = imageFile.readAsBytesSync();
     String base64Image = base64.encode(imageBytes);
-    print(base64Image);
-    var url = "aillergy.tec/abcdef";
-    http.Response res =  await http.post(url, body: {"data":base64Image});
+//    print(base64Image);
+    var url = "aillergy.tec/abc";
+    http.Response res =  await http.post(url, body: {"image":base64Image, "allergens": allergens});
     return res.body;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Image.file(File(imagePath)),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // SEND TO SERVER
-            File imageFile = new File(imagePath);
-            var body = upload(imageFile);
+        body: Stack(
+          children: <Widget>[
+            Image.file(File(imagePath)),
+            Container (
+              child: ButtonTheme (
+                height: 110.0,
+                minWidth: 300.0,
+                child: RaisedButton(
+                  onPressed: () {
+                    File imageFile = new File(imagePath);
+                    var body = upload(imageFile);
+                  },
+                  color: Color(0xFFACECD5),
+                  child: const Text('Evaluate', style: TextStyle(fontSize: 40, fontFamily: 'Open Sans', fontWeight: FontWeight.w400,)),
+                  shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
+                ),
+              ),
+              alignment: new Alignment(0,0.9)
+            ),
+          ],
+        ),
 
 
-          },
-          child: Icon(Icons.file_upload),
-          backgroundColor: Color(0xFFB19CD9),
-        )
     );
   }
 }
